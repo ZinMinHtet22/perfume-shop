@@ -1,0 +1,289 @@
+{
+  "Metadata": {
+    "title": "Perfume Shop - Fine Fragrances",
+    "description": "Discover your perfect scent. Shop perfumes with KBZ Pay, bank transfer, and cash on delivery."
+  },
+  "Home": {
+    "heading": "Discover Your Signature Scent",
+    "tagline": "Fine perfumes for every occasion, delivered across Myanmar.",
+    "heroBadge": "Authentic fragrances · Delivered nationwide",
+    "cta": "Shop Now",
+    "secondaryCta": "Explore Collection",
+    "featuredTitle": "Featured Fragrances",
+    "featuredAll": "View all",
+    "values": {
+      "pay": {
+        "title": "KBZ Pay, Bank & COD",
+        "desc": "Pay your way — KBZ Pay QR, bank transfer, or cash on delivery."
+      },
+      "delivery": {
+        "title": "Nationwide Delivery",
+        "desc": "Fast, careful shipping to every corner of Myanmar."
+      },
+      "authentic": {
+        "title": "100% Authentic",
+        "desc": "Every bottle is sourced from trusted suppliers and quality-checked."
+      }
+    },
+    "ctaBand": {
+      "title": "Find the scent that speaks for you",
+      "desc": "Browse dozens of designer and niche fragrances for men and women.",
+      "button": "Start Shopping"
+    }
+  },
+  "Nav": {
+    "brand": "Perfume Shop",
+    "shop": "Shop",
+    "about": "About",
+    "contact": "Contact",
+    "language": "Language",
+    "switchTo": "Switch to {locale}",
+    "account": "Account",
+    "wishlist": "Wishlist"
+  },
+  "Shop": {
+    "title": "Shop",
+    "subtitle": "Explore our collection of fine fragrances."
+  },
+  "Filters": {
+    "search": "Search perfumes, brands...",
+    "gender": {
+      "MEN": "Men",
+      "WOMEN": "Women",
+      "UNISEX": "Unisex"
+    },
+    "allGenders": "All genders",
+    "allConcentrations": "All concentrations",
+    "allCategories": "All categories",
+    "sortNewest": "Newest",
+    "sortPriceAsc": "Price: low to high",
+    "sortPriceDesc": "Price: high to low",
+    "apply": "Apply",
+    "results": "{count, plural, one {# product} other {# products}}",
+    "noResults": "No products match your filters."
+  },
+  "Product": {
+    "sizeLabel": "Size",
+    "inStock": "{count} in stock",
+    "soldOut": "Out of stock",
+    "addToCart": "Add to Cart",
+    "added": "Added!",
+    "description": "Description",
+    "notes": "Fragrance Notes",
+    "noteLevels": {
+      "TOP": "Top",
+      "HEART": "Heart",
+      "BASE": "Base"
+    },
+    "gender": {
+      "MEN": "For Men",
+      "WOMEN": "For Women",
+      "UNISEX": "Unisex"
+    },
+    "scentFamily": "Family",
+    "category": "Category",
+    "priceNote": "Base price {price} (50 ml)",
+    "reviews": "Reviews",
+    "reviewCount": "{count} review(s)",
+    "noReviews": "No reviews yet. Be the first to review this perfume!",
+    "writeReview": "Write a review",
+    "rating": "Rating",
+    "reviewTitle": "Title (optional)",
+    "reviewComment": "Your review",
+    "reviewSubmit": "Submit review",
+    "reviewSubmitting": "Submitting…",
+    "reviewPending": "Thanks! Your review has been submitted and is awaiting approval.",
+    "signInToReview": "Sign in to write a review.",
+    "signIn": "Sign in",
+    "anonymous": "Anonymous"
+  },
+  "Cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty.",
+    "continueShopping": "Continue shopping",
+    "remove": "Remove",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "checkoutSoon": "Checkout opens in the next phase — your cart is saved.",
+    "clear": "Clear cart"
+  },
+  "Auth": {
+    "loginTitle": "Sign in",
+    "loginDesc": "Welcome back — sign in to your account.",
+    "loginSubmit": "Sign in",
+    "registerTitle": "Create account",
+    "registerDesc": "Join us to track orders and check out faster.",
+    "registerSubmit": "Create account",
+    "submitting": "Please wait...",
+    "email": "Email",
+    "password": "Password",
+    "name": "Full name",
+    "phone": "Phone (optional)",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "registerLink": "Register",
+    "loginLink": "Sign in",
+    "errors": {
+      "invalidCredentials": "Invalid email or password.",
+      "invalidInput": "Please check your inputs and try again.",
+      "emailTaken": "This email is already registered."
+    }
+  },
+  "Account": {
+    "title": "My account",
+    "desc": "Your profile and session.",
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "roleUser": "Customer",
+    "roleAdmin": "Admin",
+    "wishlist": "Wishlist",
+    "adminPanel": "Admin panel",
+    "signOut": "Sign out",
+    "orders": "Orders",
+    "reviews": "Reviews",
+    "totalSpent": "Total spent",
+    "memberSince": "Member since",
+    "phone": "Phone",
+    "notProvided": "Not provided",
+    "profileDetails": "Profile details",
+    "quickActions": "Quick actions",
+    "continueShopping": "Continue shopping"
+  },
+  "Checkout": {
+    "title": "Checkout",
+    "shippingAddress": "Shipping address",
+    "name": "Full name",
+    "phone": "Phone number",
+    "line1": "Address line 1",
+    "line2": "Address line 2 (optional)",
+    "city": "City / Township",
+    "state": "State / Region",
+    "note": "Order note (optional)",
+    "paymentMethod": "Payment method",
+    "methods": {
+      "KBZPAY": "KBZPay",
+      "BANK": "Bank transfer",
+      "COD": "Cash on delivery"
+    },
+    "methodDesc": {
+      "KBZPAY": "Pay securely with KBZPay QR code.",
+      "BANK": "Transfer to our bank account and upload the receipt.",
+      "COD": "Pay in cash when your order arrives."
+    },
+    "subtotal": "Subtotal",
+    "shippingFee": "Shipping fee",
+    "freeShipping": "Free",
+    "total": "Total",
+    "placeOrder": "Place order",
+    "placing": "Placing your order...",
+    "emptyCart": "Your cart is empty.",
+    "continueShopping": "Continue shopping",
+    "errors": {
+      "loginRequired": "Please sign in to place an order.",
+      "invalidInput": "Please check your inputs and try again.",
+      "variantNotFound": "One of the items in your cart is no longer available.",
+      "outOfStock": "Not enough stock for one of the items.",
+      "orderFailed": "Could not place your order. Please try again."
+    },
+    "couponTitle": "Coupon code",
+    "couponPlaceholder": "Enter code",
+    "couponApply": "Apply",
+    "couponChecking": "Checking…",
+    "couponApplied": "Coupon {code} applied",
+    "couponRemove": "Remove",
+    "discountLabel": "Discount",
+    "couponErrors": {
+      "emptyCode": "Enter a coupon code.",
+      "invalidCoupon": "This coupon is not valid.",
+      "couponExpired": "This coupon has expired.",
+      "couponUsedUp": "This coupon has been fully used.",
+      "couponMinOrder": "This coupon does not meet the minimum order amount."
+    }
+  },
+  "Pay": {
+    "title": "Complete your payment",
+    "orderNo": "Order number",
+    "orderSummary": "Order summary",
+    "subtotal": "Subtotal",
+    "shippingFee": "Shipping fee",
+    "freeShipping": "Free",
+    "total": "Total",
+    "shipTo": "Ship to",
+    "codNotice": "You chose cash on delivery. Please prepare the exact amount when your order arrives.",
+    "kbzTitle": "Pay with KBZPay",
+    "kbzNote": "Scan the QR code with your KBZPay app, then upload your payment screenshot below.",
+    "kbzQrPending": "KBZPay QR code will be available soon. You can upload your receipt after paying to the admin-provided account.",
+    "bankTitle": "Bank transfer",
+    "bankNote": "Transfer the exact amount to one of the accounts below, then upload your receipt.",
+    "payAmount": "Amount to pay",
+    "bankRef": "Transfer reference (optional)",
+    "receiptFile": "Payment screenshot / receipt",
+    "uploadTitle": "Upload payment receipt",
+    "uploadNote": "JPG, PNG or WebP, up to 8 MB. Our team verifies it manually and confirms your order.",
+    "uploadButton": "Upload receipt",
+    "uploading": "Uploading...",
+    "uploadSuccess": "Receipt uploaded. Please wait for confirmation.",
+    "uploadErrors": {
+      "loginRequired": "Please sign in to upload a receipt.",
+      "invalidInput": "Please check your input and try again.",
+      "fileTooLarge": "File is too large (max 8 MB).",
+      "invalidFileType": "Only JPG, PNG or WebP images are allowed.",
+      "notFound": "Order not found.",
+      "alreadyPaid": "This order is already paid.",
+      "alreadyUploaded": "A receipt is already under review."
+    },
+    "yourReceipt": "Your uploaded receipt",
+    "waitingReview": "Your receipt is being verified by our team. Thank you for your patience.",
+    "autoRefresh": "Status refreshes automatically every 8 seconds.",
+    "paidNotice": "Payment received. Your order is being prepared.",
+    "paymentStatus": {
+      "CREATED": "Created",
+      "PENDING": "Awaiting payment",
+      "AWAITING_REVIEW": "Receipt under review",
+      "PAID": "Paid",
+      "FAILED": "Failed",
+      "REFUNDED": "Refunded",
+      "EXPIRED": "Expired"
+    },
+    "orderStatus": {
+      "PENDING": "Pending",
+      "AWAITING_PAYMENT": "Awaiting payment",
+      "CONFIRMED": "Confirmed",
+      "SHIPPED": "Shipped",
+      "DELIVERED": "Delivered",
+      "CANCELLED": "Cancelled"
+    },
+    "discountLabel": "Discount"
+  },
+  "Wishlist": {
+    "title": "My Wishlist",
+    "empty": "Your wishlist is empty.",
+    "signInPrompt": "Sign in to view and save your favorite perfumes.",
+    "signIn": "Sign in",
+    "add": "Add to wishlist",
+    "remove": "Remove from wishlist",
+    "continueShopping": "Continue shopping"
+  },
+  "About": {
+    "title": "About Us",
+    "story1": "We are a perfume house built for Myanmar — bringing authentic fragrances from the world's beloved brands to your doorstep, verified and cared for at every step.",
+    "story2": "Every bottle in our collection is sourced through trusted channels, checked by our team, and packed with care. From first spray to last note, we want your experience to feel effortless.",
+    "valuesTitle": "What we stand for",
+    "value1": "Authenticity first — every product is verified before it reaches you.",
+    "value2": "Fair prices in MMK with no surprises at checkout.",
+    "value3": "Real people on support, ready to help before and after your order.",
+    "cta": "Browse the collection"
+  },
+  "Contact": {
+    "title": "Contact Us",
+    "intro": "Questions about an order, a fragrance, or delivery? We usually reply within one business day.",
+    "email": "Email",
+    "phone": "Phone / Viber / Telegram",
+    "address": "Address",
+    "addressValue": "Yangon, Myanmar",
+    "hours": "Opening hours",
+    "hoursValue": "Mon – Sat, 9:00 AM – 6:00 PM (MMT)",
+    "cta": "Continue shopping"
+  }
+}
