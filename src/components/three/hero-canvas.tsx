@@ -11,7 +11,10 @@ const BottleScene = dynamic(() => import("./bottle-scene"), {
 
 export function HeroCanvas() {
   return (
-    <div className="h-[360px] w-full sm:h-[440px]" aria-hidden>
+    <div
+      className="hero-canvas h-[360px] w-full cursor-grab active:cursor-grabbing sm:h-[440px]"
+      aria-hidden
+    >
       <BottleScene />
     </div>
   );

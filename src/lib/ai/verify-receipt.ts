@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import { createRequire } from "node:module";
 import path from "node:path";
 import { createWorker, type Worker } from "tesseract.js";
 import type { AiVerdict, RulesVerdict, VerificationSource } from "@/generated/prisma/client";
@@ -28,9 +29,22 @@ export type ReceiptCheckResult = {
 
 let workerPromise: Promise<Worker> | null = null;
 
+// Turbopack rewrites `__dirname` inside bundled deps, so tesseract.js's
+// default workerPath resolves to a nonexistent location. Resolve the real
+// file from the project root instead.
+function resolveTesseractWorker(): string {
+  const requireFromRoot = createRequire(path.join(process.cwd(), "package.json"));
+  return requireFromRoot.resolve("tesseract.js/src/worker-script/node/index.js");
+}
+
 function getWorker(): Promise<Worker> {
   if (!workerPromise) {
-    workerPromise = createWorker("eng");
+    workerPromise = createWorker("eng", 1, {
+      workerPath: resolveTesseractWorker(),
+    }).catch((err) => {
+      workerPromise = null;
+      throw err;
+    });
   }
   return workerPromise;
 }

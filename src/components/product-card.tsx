@@ -28,21 +28,31 @@ export function ProductCard({ product }: { product: ProductCardData }) {
       children
     );
 
+  const imageNode = product.imageUrl ? (
+    <Image
+      src={product.imageUrl}
+      alt={product.imageAlt ?? product.name}
+      fill
+      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+      className="object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+  ) : null;
+
   return (
-    <Card className="gap-2 overflow-hidden py-0">
-      <div className="relative aspect-square bg-muted">
-        {cardLink(
-          <>
-            {product.imageUrl ? (
-              <Image
-                src={product.imageUrl}
-                alt={product.imageAlt ?? product.name}
-                fill
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                className="object-cover"
-              />
-            ) : null}
-          </>
+    <Card className="group gap-2 overflow-hidden py-0 transition-all duration-300 hover:-translate-y-1 hover:border-[#c9a227]/30 hover:shadow-lg hover:shadow-[#c9a227]/15">
+      <div className="relative aspect-square bg-muted overflow-hidden">
+        {product.slug ? (
+          <Link
+            href={`/product/${product.slug}`}
+            className="absolute inset-0"
+            aria-label={product.name}
+            tabIndex={-1}
+            aria-hidden
+          >
+            {imageNode}
+          </Link>
+        ) : (
+          imageNode
         )}
         <Badge className="absolute left-2 top-2" variant="secondary">
           {product.concentration}

@@ -18,13 +18,16 @@ export function Navbar({ userName }: { userName?: string | null }) {
   const activeLocale = useLocale();
 
   return (
-    <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur">
-      <div className="mx-auto flex h-14 w-full max-w-6xl items-center justify-between gap-4 px-4">
-        <Link href="/" className="font-semibold tracking-tight">
-          {t("brand")}
+    <header className="fixed inset-x-0 top-4 z-50 px-4">
+      <nav className="mx-auto flex h-12 w-full max-w-3xl items-center justify-between gap-3 rounded-full border border-white/[0.08] bg-[#0a0a0a]/80 px-5 backdrop-blur-md">
+        <Link href="/" className="flex shrink-0 items-center gap-2.5">
+          <span className="h-2.5 w-2.5 rounded-full bg-[#c9a227] shadow-[0_0_12px_#c9a227]" />
+          <span className="text-xs font-medium uppercase tracking-wider">
+            {t("brand")}
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
+        <nav className="hidden items-center gap-7 text-xs tracking-wide text-muted-foreground md:flex">
           <Link href="/shop" className="transition-colors hover:text-foreground">
             {t("shop")}
           </Link>
@@ -34,19 +37,16 @@ export function Navbar({ userName }: { userName?: string | null }) {
           <Link href="/about" className="transition-colors hover:text-foreground">
             {t("about")}
           </Link>
-          <Link
-            href="/contact"
-            className="transition-colors hover:text-foreground"
-          >
+          <Link href="/contact" className="transition-colors hover:text-foreground">
             {t("contact")}
           </Link>
         </nav>
 
-        <div className="flex items-center gap-1">
-          <Button variant="ghost" size="sm" asChild className="hidden md:inline-flex">
+        <div className="flex shrink-0 items-center gap-0.5">
+          <Button variant="ghost" size="sm" asChild className="hidden text-xs md:inline-flex">
             <Link
               href={userName ? "/account" : "/login"}
-              className="max-w-40 truncate"
+              className="max-w-32 truncate"
             >
               {userName || t("account")}
             </Link>
@@ -57,6 +57,7 @@ export function Navbar({ userName }: { userName?: string | null }) {
               key={locale}
               size="sm"
               variant={locale === activeLocale ? "secondary" : "ghost"}
+              className="text-xs"
               onClick={() => router.replace(pathname, { locale })}
               aria-label={t("switchTo", { locale: LOCALE_LABELS[locale] })}
             >
@@ -64,7 +65,7 @@ export function Navbar({ userName }: { userName?: string | null }) {
             </Button>
           ))}
         </div>
-      </div>
+      </nav>
     </header>
   );
 }

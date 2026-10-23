@@ -1,6 +1,7 @@
 "use client";
 
 import { useTransition, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,6 +10,7 @@ import { uploadReceiptAction } from "./upload-actions";
 
 export function UploadReceipt({ orderNo }: { orderNo: string }) {
   const t = useTranslations("Pay");
+  const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [message, setMessage] = useState<{ type: "ok" | "error"; text: string } | null>(
     null
@@ -21,6 +23,7 @@ export function UploadReceipt({ orderNo }: { orderNo: string }) {
         setMessage({ type: "error", text: t(`uploadErrors.${result.error}`) });
       } else {
         setMessage({ type: "ok", text: t("uploadSuccess") });
+        router.refresh();
       }
     });
   };

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 
 const emptySubscribe = () => () => {};
@@ -18,6 +19,7 @@ export function OrderStatusPoller({
   initial: StatusPayload;
 }) {
   const t = useTranslations("Pay");
+  const router = useRouter();
   const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const [status, setStatus] = useState<StatusPayload>(initial);
 
@@ -25,17 +27,32 @@ export function OrderStatusPoller({
     const terminal = ["PAID", "CANCELLED", "DELIVERED", "FAILED", "EXPIRED"];
     if (terminal.includes(initial.paymentStatus)) return;
 
-    const id = setInterval(() => {
+    // Refresh the page whenever the server-rendered status is stale.
+    // Comparing against `initial` (not a ref) means a refresh dropped in a
+    // background tab is retried on the next tick.
+    const check = () => {
       fetch(`/api/orders/${orderNo}/status`)
         .then((r) => (r.ok ? r.json() : null))
         .then((data: StatusPayload | null) => {
-          if (data) setStatus(data);
+          if (!data) return;
+          setStatus(data);
+          if (data.paymentStatus !== initial.paymentStatus) {
+            router.refresh();
+          }
         })
         .catch(() => undefined);
-    }, 8000);
+    };
 
-    return () => clearInterval(id);
-  }, [orderNo, initial.paymentStatus]);
+    const id = setInterval(check, 8000);
+    const onVisible = () => {
+      if (document.visibilityState === "visible") check();
+    };
+    document.addEventListener("visibilitychange", onVisible);
+    return () => {
+      clearInterval(id);
+      document.removeEventListener("visibilitychange", onVisible);
+    };
+  }, [orderNo, initial.paymentStatus, router]);
 
   if (!mounted) {
     return <div className="h-6 w-40 animate-pulse rounded bg-muted" />;
