@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { HeroCanvas } from "@/components/three/hero-canvas";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { FeaturedProducts } from "./featured-products";
+import { RecommendedSection } from "./recommended-section";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -105,6 +106,18 @@ export default async function HomePage({ params }: Props) {
         }
       >
         <FeaturedProducts locale={locale} />
+      </Suspense>
+
+      <Suspense
+        fallback={
+          <div className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-6 py-16 sm:grid-cols-3 lg:grid-cols-4">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div key={i} className="h-64 animate-pulse rounded-lg bg-muted" />
+            ))}
+          </div>
+        }
+      >
+        <RecommendedSection locale={locale} />
       </Suspense>
 
       <section className="border-t border-white/[0.06]">

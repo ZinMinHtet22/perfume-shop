@@ -243,9 +243,14 @@ export function CheckoutClient({
         <p className="text-sm text-destructive">{t(`errors.${state.error}`)}</p>
       ) : null}
 
-      <Button type="submit" size="lg" className="w-full" disabled={pending}>
-        {pending ? t("placing") : t("placeOrder")}
-      </Button>
+      <div className="space-y-3">
+        <Button type="submit" size="lg" className="w-full" disabled={pending}>
+          {pending ? t("placing") : t("placeOrder")}
+        </Button>
+        <Button variant="outline" size="lg" className="w-full" asChild>
+          <Link href="/shop">{t("continueShopping")}</Link>
+        </Button>
+      </div>
     </form>
   );
 }

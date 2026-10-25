@@ -11,6 +11,10 @@
     "secondaryCta": "Explore Collection",
     "featuredTitle": "Featured Fragrances",
     "featuredAll": "View all",
+    "recTitle": "Recommended for you",
+    "recSubtitle": "Similar to the perfumes you've been viewing",
+    "recFallbackSubtitle": "Handpicked from across the shop",
+    "recLoading": "Finding matches",
     "values": {
       "pay": {
         "title": "KBZ Pay, Bank & COD",
@@ -254,7 +258,9 @@
       "DELIVERED": "Delivered",
       "CANCELLED": "Cancelled"
     },
-    "discountLabel": "Discount"
+    "discountLabel": "Discount",
+    "continueShopping": "Continue shopping",
+    "returnNote": "Changed your mind? Your order is saved and stays pending — nothing is cancelled. You can come back and pay whenever you like."
   },
   "Wishlist": {
     "title": "My Wishlist",

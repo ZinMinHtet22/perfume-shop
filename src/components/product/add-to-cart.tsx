@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Check, Minus, Plus } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/store/cart";
+import { useRecentStore } from "@/store/recent";
 import { formatMMK } from "@/lib/format";
 
 export type VariantOption = {
@@ -31,11 +32,17 @@ export function AddToCart({
 }) {
   const t = useTranslations("Product");
   const addItem = useCartStore((state) => state.addItem);
+  const addRecent = useRecentStore((state) => state.addRecent);
 
   const firstInStock = variants.find((v) => v.stock > 0) ?? variants[0];
   const [selectedId, setSelectedId] = useState(firstInStock?.id);
   const [qty, setQtyState] = useState(1);
   const [added, setAdded] = useState(false);
+
+  // Remember the perfume being viewed so the home page can recommend similar ones.
+  useEffect(() => {
+    addRecent(product.productId);
+  }, [product.productId, addRecent]);
 
   const selected = variants.find((v) => v.id === selectedId) ?? variants[0];
   const soldOut = !selected || selected.stock <= 0;

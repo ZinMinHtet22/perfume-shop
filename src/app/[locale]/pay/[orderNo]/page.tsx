@@ -4,6 +4,8 @@ import { connection } from "next/server";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { prisma } from "@/lib/prisma";
 import { formatMMK } from "@/lib/format";
+import { Link } from "@/i18n/navigation";
+import { Button } from "@/components/ui/button";
 import { OrderStatusPoller } from "./status-poller";
 import { UploadReceipt } from "./upload-receipt";
 
@@ -193,6 +195,13 @@ export default async function PayPage({ params }: Props) {
           {t("paidNotice")}
         </section>
       ) : null}
+
+      <section className="space-y-3 rounded-lg border border-dashed p-5 text-center">
+        <p className="text-sm text-muted-foreground">{t("returnNote")}</p>
+        <Button variant="outline" size="lg" asChild>
+          <Link href="/shop">{t("continueShopping")}</Link>
+        </Button>
+      </section>
     </div>
   );
 }
