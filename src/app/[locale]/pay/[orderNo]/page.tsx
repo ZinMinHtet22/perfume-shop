@@ -55,11 +55,14 @@ export default async function PayPage({ params }: Props) {
     payment.status !== "AWAITING_REVIEW";
 
   return (
-    <div className="mx-auto max-w-3xl space-y-8 px-4 py-12">
-      <div className="space-y-3">
-        <h1 className="text-3xl font-semibold tracking-tight">{t("title")}</h1>
-        <p className="text-sm text-muted-foreground">
-          {t("orderNo")}: <span className="font-mono">{order.orderNo}</span>
+    <div className="mx-auto max-w-3xl space-y-8 px-6 py-14 lg:py-20">
+      <div className="space-y-3 border-b border-border pb-6">
+        <p className="eyebrow text-champagne">Payment</p>
+        <h1 className="font-display text-4xl leading-[1.05] tracking-[-0.02em] text-ivory">
+          {t("title")}
+        </h1>
+        <p className="text-sm text-ash">
+          {t("orderNo")}: <span className="font-mono text-ivory">{order.orderNo}</span>
         </p>
         <OrderStatusPoller
           orderNo={order.orderNo}
@@ -70,66 +73,74 @@ export default async function PayPage({ params }: Props) {
         />
       </div>
 
-      <section className="space-y-3 rounded-lg border p-5">
-        <h2 className="font-medium">{t("orderSummary")}</h2>
-        <ul className="divide-y">
+      <section className="space-y-3 rounded-[4px] border border-border bg-surface/30 p-5 sm:p-6">
+        <h2 className="font-display text-xl text-ivory">{t("orderSummary")}</h2>
+        <ul className="divide-y divide-border">
           {order.items.map((item) => (
-            <li key={item.id} className="flex justify-between py-2 text-sm">
-              <span>
+            <li key={item.id} className="flex justify-between gap-4 py-3 text-sm">
+              <span className="text-ash">
                 {item.productName} · {item.sizeMl} ml × {item.qty}
               </span>
-              <span>{formatMMK(item.priceAtPurchase * item.qty)}</span>
+              <span className="tabular shrink-0 text-ivory">
+                {formatMMK(item.priceAtPurchase * item.qty)}
+              </span>
             </li>
           ))}
         </ul>
-        <div className="space-y-1 border-t pt-3 text-sm">
+        <div className="space-y-2 border-t border-border pt-3 text-sm">
           <div className="flex justify-between">
-            <span className="text-muted-foreground">{t("subtotal")}</span>
-            <span>{formatMMK(order.subtotal)}</span>
+            <span className="text-ash">{t("subtotal")}</span>
+            <span className="tabular text-ivory">{formatMMK(order.subtotal)}</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-muted-foreground">{t("shippingFee")}</span>
-            <span>{order.shipping === 0 ? t("freeShipping") : formatMMK(order.shipping)}</span>
+            <span className="text-ash">{t("shippingFee")}</span>
+            <span className="tabular text-ivory">
+              {order.shipping === 0 ? t("freeShipping") : formatMMK(order.shipping)}
+            </span>
           </div>
           {order.discount > 0 ? (
-            <div className="flex justify-between text-green-700 dark:text-green-400">
+            <div className="flex justify-between text-champagne">
               <span>{t("discountLabel")}</span>
-              <span>-{formatMMK(order.discount)}</span>
+              <span className="tabular">-{formatMMK(order.discount)}</span>
             </div>
           ) : null}
-          <div className="flex justify-between font-semibold">
-            <span>{t("total")}</span>
-            <span>{formatMMK(order.total)}</span>
+          <div className="flex items-center justify-between border-t border-border pt-3">
+            <span className="eyebrow text-taupe">{t("total")}</span>
+            <span className="tabular font-display text-2xl text-ivory">
+              {formatMMK(order.total)}
+            </span>
           </div>
         </div>
       </section>
 
-      <section className="space-y-2 rounded-lg border p-5 text-sm">
-        <h2 className="font-medium">{t("shipTo")}</h2>
-        <p>{address.name}</p>
-        <p>{address.phone}</p>
-        <p>
-          {address.line1}
-          {address.line2 ? `, ${address.line2}` : ""}, {address.city}
-          {address.state ? `, ${address.state}` : ""}
-        </p>
+      <section className="space-y-2 rounded-[4px] border border-border bg-surface/30 p-5 text-sm sm:p-6">
+        <h2 className="font-display text-xl text-ivory">{t("shipTo")}</h2>
+        <div className="mt-2 space-y-1 text-ash">
+          <p className="text-ivory">{address.name}</p>
+          <p>{address.phone}</p>
+          <p>
+            {address.line1}
+            {address.line2 ? `, ${address.line2}` : ""}, {address.city}
+            {address.state ? `, ${address.state}` : ""}
+          </p>
+        </div>
       </section>
 
       {order.paymentMethod === "COD" ? (
-        <section className="rounded-lg border border-green-200 bg-green-50 p-5 text-sm text-green-900">
+        <section className="rounded-[4px] border border-champagne/30 bg-champagne/10 p-5 text-sm text-ivory">
           {t("codNotice")}
         </section>
       ) : null}
 
       {order.paymentMethod === "KBZPAY" ? (
-        <section className="space-y-4 rounded-lg border p-5">
-          <h2 className="font-medium">{t("kbzTitle")}</h2>
-          <p className="text-sm text-muted-foreground">{t("kbzNote")}</p>
-          <p className="text-lg font-semibold">
-            {t("payAmount")}: {formatMMK(payment.amount)}
+        <section className="space-y-4 rounded-[4px] border border-border bg-surface/30 p-5 sm:p-6">
+          <h2 className="font-display text-xl text-ivory">{t("kbzTitle")}</h2>
+          <p className="text-sm text-ash">{t("kbzNote")}</p>
+          <p className="font-display text-2xl text-ivory">
+            {t("payAmount")}: <span className="tabular">{formatMMK(payment.amount)}</span>
           </p>
           {payCfg.kbzpay?.qrImageUrl ? (
-            <div className="relative mx-auto h-64 w-64">
+            <div className="relative mx-auto h-64 w-64 rounded-[4px] border border-border bg-canvas p-3">
               <Image
                 src={payCfg.kbzpay.qrImageUrl}
                 alt="KBZ Pay QR"
@@ -139,7 +150,7 @@ export default async function PayPage({ params }: Props) {
               />
             </div>
           ) : (
-            <p className="rounded-md border border-dashed p-6 text-center text-sm text-muted-foreground">
+            <p className="rounded-[4px] border border-dashed border-border p-6 text-center text-sm text-ash">
               {t("kbzQrPending")}
             </p>
           )}
@@ -147,18 +158,18 @@ export default async function PayPage({ params }: Props) {
       ) : null}
 
       {order.paymentMethod === "BANK" ? (
-        <section className="space-y-3 rounded-lg border p-5">
-          <h2 className="font-medium">{t("bankTitle")}</h2>
-          <p className="text-sm text-muted-foreground">{t("bankNote")}</p>
-          <p className="text-lg font-semibold">
-            {t("payAmount")}: {formatMMK(payment.amount)}
+        <section className="space-y-3 rounded-[4px] border border-border bg-surface/30 p-5 sm:p-6">
+          <h2 className="font-display text-xl text-ivory">{t("bankTitle")}</h2>
+          <p className="text-sm text-ash">{t("bankNote")}</p>
+          <p className="font-display text-2xl text-ivory">
+            {t("payAmount")}: <span className="tabular">{formatMMK(payment.amount)}</span>
           </p>
           <ul className="space-y-2">
             {(payCfg.bank?.accounts ?? []).map((acc, i) => (
-              <li key={i} className="rounded-md border p-3 text-sm">
-                <p className="font-medium">{acc.bank}</p>
-                <p>{acc.accountName}</p>
-                <p className="font-mono">{acc.accountNo}</p>
+              <li key={i} className="rounded-[4px] border border-border bg-canvas/40 p-4 text-sm">
+                <p className="font-medium text-ivory">{acc.bank}</p>
+                <p className="text-ash">{acc.accountName}</p>
+                <p className="font-mono text-ivory">{acc.accountNo}</p>
               </li>
             ))}
           </ul>
@@ -166,24 +177,24 @@ export default async function PayPage({ params }: Props) {
       ) : null}
 
       {payment.receiptImageUrl ? (
-        <section className="space-y-3 rounded-lg border p-5">
-          <h2 className="font-medium">{t("yourReceipt")}</h2>
-          <div className="relative h-64 w-full max-w-sm">
+        <section className="space-y-3 rounded-[4px] border border-border bg-surface/30 p-5 sm:p-6">
+          <h2 className="font-display text-xl text-ivory">{t("yourReceipt")}</h2>
+          <div className="relative h-64 w-full max-w-sm overflow-hidden rounded-[4px] border border-border bg-canvas">
             <Image
               src={payment.receiptImageUrl}
               alt="Receipt"
               fill
               sizes="(max-width: 640px) 100vw, 384px"
-              className="rounded-md object-contain"
+              className="object-contain"
             />
           </div>
           {payment.bankRef ? (
-            <p className="text-sm text-muted-foreground">
-              {t("bankRef")}: {payment.bankRef}
+            <p className="text-sm text-ash">
+              {t("bankRef")}: <span className="text-ivory">{payment.bankRef}</span>
             </p>
           ) : null}
           {payment.status === "AWAITING_REVIEW" ? (
-            <p className="text-sm text-amber-700">{t("waitingReview")}</p>
+            <p className="text-sm text-champagne">{t("waitingReview")}</p>
           ) : null}
         </section>
       ) : null}
@@ -191,14 +202,19 @@ export default async function PayPage({ params }: Props) {
       {showUpload ? <UploadReceipt orderNo={order.orderNo} /> : null}
 
       {payment.status === "PAID" ? (
-        <section className="rounded-lg border border-green-200 bg-green-50 p-5 text-sm text-green-900">
+        <section className="rounded-[4px] border border-champagne/30 bg-champagne/10 p-5 text-sm text-ivory">
           {t("paidNotice")}
         </section>
       ) : null}
 
-      <section className="space-y-3 rounded-lg border border-dashed p-5 text-center">
-        <p className="text-sm text-muted-foreground">{t("returnNote")}</p>
-        <Button variant="outline" size="lg" asChild>
+      <section className="space-y-3 rounded-[4px] border border-dashed border-border p-6 text-center">
+        <p className="text-sm text-ash">{t("returnNote")}</p>
+        <Button
+          variant="outline"
+          size="lg"
+          asChild
+          className="h-11 rounded-[4px] border-border bg-transparent text-ivory hover:border-ivory/25 hover:bg-transparent hover:text-champagne"
+        >
           <Link href="/shop">{t("continueShopping")}</Link>
         </Button>
       </section>

@@ -40,31 +40,32 @@ export function IntroSplash() {
   return (
     <div
       aria-hidden
-      className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#0b0908] transition-opacity duration-700 ${
+      role="presentation"
+      className={`fixed inset-0 z-[100] flex items-center justify-center bg-canvas transition-opacity duration-700 ${
         state === "fading" ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
     >
-      <div className="pointer-events-none absolute h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(201,162,39,0.35),transparent_65%)] intro-glow" />
+      <div className="intro-glow pointer-events-none absolute h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(198,166,100,0.28),transparent_65%)]" />
 
       <div className="relative flex flex-col items-center gap-5 px-6 text-center">
         <p
-          className="text-xs uppercase tracking-[0.45em] text-[#c9a227] intro-fade-up"
+          className="eyebrow text-champagne intro-fade-up"
           style={{ animationDelay: "0.15s" }}
         >
           {t("Nav.brand")}
         </p>
         <div
-          className="h-px bg-gradient-to-r from-transparent via-[#c9a227] to-transparent intro-rule"
+          className="intro-rule h-px bg-gradient-to-r from-transparent via-champagne to-transparent"
           style={{ animationDelay: "0.5s" }}
         />
         <h1
-          className="max-w-lg text-3xl font-semibold leading-snug tracking-tight text-[#f4ece1] intro-fade-up sm:text-4xl"
+          className="intro-fade-up max-w-lg font-display text-3xl font-normal leading-snug tracking-[-0.01em] text-ivory sm:text-4xl"
           style={{ animationDelay: "0.7s" }}
         >
           {t("Home.heading")}
         </h1>
         <p
-          className="max-w-md text-sm text-[#a89880] intro-fade-up"
+          className="intro-fade-up max-w-md text-sm text-ash"
           style={{ animationDelay: "1.1s" }}
         >
           {t("Home.tagline")}

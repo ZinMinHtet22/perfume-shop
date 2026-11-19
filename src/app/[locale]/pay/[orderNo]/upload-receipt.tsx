@@ -29,38 +29,56 @@ export function UploadReceipt({ orderNo }: { orderNo: string }) {
   };
 
   return (
-    <form action={handleSubmit} className="space-y-4 rounded-lg border p-5">
+    <form
+      action={handleSubmit}
+      className="space-y-4 rounded-[4px] border border-border bg-surface/30 p-5 sm:p-6"
+    >
       <input type="hidden" name="orderNo" value={orderNo} />
-      <h2 className="font-medium">{t("uploadTitle")}</h2>
-      <p className="text-sm text-muted-foreground">{t("uploadNote")}</p>
+      <h2 className="font-display text-xl text-ivory">{t("uploadTitle")}</h2>
+      <p className="text-sm text-ash">{t("uploadNote")}</p>
 
       <div className="space-y-2">
-        <Label htmlFor="bankRef">{t("bankRef")}</Label>
-        <Input id="bankRef" name="bankRef" maxLength={100} />
+        <Label htmlFor="bankRef" className="text-ash">
+          {t("bankRef")}
+        </Label>
+        <Input
+          id="bankRef"
+          name="bankRef"
+          maxLength={100}
+          className="rounded-[4px]"
+        />
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="file">{t("receiptFile")}</Label>
+        <Label htmlFor="file" className="text-ash">
+          {t("receiptFile")}
+        </Label>
         <Input
           id="file"
           name="file"
           type="file"
           accept="image/jpeg,image/png,image/webp"
           required
+          className="rounded-[4px] file:text-ivory"
         />
       </div>
 
       {message ? (
         <p
           className={`text-sm ${
-            message.type === "ok" ? "text-green-600" : "text-destructive"
+            message.type === "ok" ? "text-champagne" : "text-destructive"
           }`}
+          role={message.type === "error" ? "alert" : "status"}
         >
           {message.text}
         </p>
       ) : null}
 
-      <Button type="submit" disabled={pending}>
+      <Button
+        type="submit"
+        disabled={pending}
+        className="h-11 rounded-[4px] px-6 hover:bg-brass"
+      >
         {pending ? t("uploading") : t("uploadButton")}
       </Button>
     </form>

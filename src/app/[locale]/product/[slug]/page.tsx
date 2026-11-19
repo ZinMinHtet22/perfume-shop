@@ -13,12 +13,12 @@ export default function ProductPage({ params }: Props) {
   return (
     <Suspense
       fallback={
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-10 md:grid-cols-2">
-          <div className="aspect-square animate-pulse rounded-2xl bg-muted" />
-          <div className="space-y-4">
-            <div className="h-4 w-24 animate-pulse rounded bg-muted" />
-            <div className="h-8 w-3/4 animate-pulse rounded bg-muted" />
-            <div className="h-24 w-full animate-pulse rounded bg-muted" />
+        <div className="mx-auto grid w-full max-w-[1320px] gap-12 px-6 py-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,440px)] lg:gap-16 lg:px-10 lg:py-16">
+          <div className="aspect-square animate-pulse rounded-[4px] bg-surface" />
+          <div className="space-y-5">
+            <div className="h-3 w-24 animate-pulse rounded-sm bg-surface" />
+            <div className="h-10 w-3/4 animate-pulse rounded-sm bg-surface" />
+            <div className="h-24 w-full animate-pulse rounded-sm bg-surface" />
           </div>
         </div>
       }

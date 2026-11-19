@@ -260,7 +260,7 @@ function Bottle({ reduced }: { reduced: boolean }) {
           <mesh position={[0, 1.82, 0]}>
             <cylinderGeometry args={[0.3, 0.3, 0.55, 48]} />
             <meshStandardMaterial
-              color="#c9a227"
+              color="#c6a664"
               metalness={1}
               roughness={0.2}
               envMapIntensity={1.3}
@@ -270,7 +270,7 @@ function Bottle({ reduced }: { reduced: boolean }) {
           <mesh position={[0, -1.05, 0]}>
             <cylinderGeometry args={[0.72, 0.8, 0.1, 64]} />
             <meshStandardMaterial
-              color="#c9a227"
+              color="#c6a664"
               metalness={1}
               roughness={0.22}
               envMapIntensity={1.3}
@@ -286,8 +286,8 @@ function Bottle({ reduced }: { reduced: boolean }) {
             scale={[3.6, 4.4, 2.4]}
             size={2.2}
             speed={0.35}
-            opacity={0.55}
-            color="#ffd98a"
+            opacity={0.35}
+            color="#e8d5a3"
             position={[0, 0.4, 0]}
           />
           <Sparkles
@@ -295,8 +295,8 @@ function Bottle({ reduced }: { reduced: boolean }) {
             scale={[6.5, 5.5, 3]}
             size={6}
             speed={0.12}
-            opacity={0.16}
-            color="#f2c069"
+            opacity={0.12}
+            color="#c6a664"
             position={[0, 0.6, 0]}
           />
         </>
@@ -318,7 +318,7 @@ export default function BottleScene() {
     >
       <ambientLight intensity={0.25} />
       <pointLight position={[-4, 2, -3]} intensity={0.6} color="#ffd27a" />
-      <pointLight position={[0, -2, 4]} intensity={0.25} color="#8ab4ff" />
+      <pointLight position={[0, -2, 4]} intensity={0.2} color="#8fa6c4" />
       <Environment resolution={256} frames={1}>
         <Lightformer intensity={4} color="#fff6e8" form="rect" position={[3.5, 3, 3]} scale={[4, 5, 1]} />
         <Lightformer intensity={2.5} color="#ffd9a0" form="rect" position={[-4, 1.5, -2]} scale={[3, 6, 1]} />

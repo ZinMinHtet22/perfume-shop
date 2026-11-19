@@ -49,10 +49,16 @@ export default async function CheckoutPage({ params }: Props) {
   ].filter((m): m is "KBZPAY" | "BANK" | "COD" => m !== null);
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12">
-      <h1 className="mb-8 text-3xl font-semibold tracking-tight">
-        {t("title")}
-      </h1>
+    <div className="mx-auto max-w-6xl px-6 py-14 lg:py-20">
+      <div className="mb-10 border-b border-border pb-6">
+        <p className="eyebrow text-champagne">Final step</p>
+        <h1 className="mt-3 font-display text-4xl leading-[1.05] tracking-[-0.02em] text-ivory sm:text-5xl">
+          {t("title")}
+        </h1>
+        <p className="mt-3 max-w-xl text-sm leading-relaxed text-ash">
+          Complete your details below. We’ll confirm your order and guide you through payment.
+        </p>
+      </div>
       <CheckoutClient
         locale={locale}
         methods={methods}

@@ -1,13 +1,10 @@
-import Image from "next/image";
 import { connection } from "next/server";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
-import { formatMMK } from "@/lib/format";
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { WishlistButton } from "@/components/wishlist-button";
+import { ProductCard } from "@/components/product-card";
 
 export const instant = false;
 
@@ -24,10 +21,16 @@ export default async function WishlistPage({ params }: Props) {
   const session = await auth();
   if (!session?.user?.id) {
     return (
-      <div className="mx-auto max-w-2xl px-4 py-24 text-center">
-        <h1 className="mb-4 text-2xl font-semibold">{t("title")}</h1>
-        <p className="mb-6 text-muted-foreground">{t("signInPrompt")}</p>
-        <Button asChild>
+      <div className="mx-auto max-w-xl px-6 py-28 text-center">
+        <p className="eyebrow text-champagne">Wishlist</p>
+        <h1 className="mt-4 font-display text-4xl tracking-[-0.02em] text-ivory">
+          {t("title")}
+        </h1>
+        <p className="mt-4 text-ash">{t("signInPrompt")}</p>
+        <Button
+          className="mt-8 h-11 rounded-[4px] px-7 hover:bg-brass"
+          asChild
+        >
           <Link href="/login">{t("signIn")}</Link>
         </Button>
       </div>
@@ -50,18 +53,26 @@ export default async function WishlistPage({ params }: Props) {
   });
 
   return (
-    <div className="mx-auto max-w-6xl space-y-6 px-4 py-10">
-      <h1 className="text-2xl font-semibold">{t("title")}</h1>
+    <div className="mx-auto w-full max-w-[1320px] px-6 py-14 lg:px-10 lg:py-20">
+      <div className="border-b border-border pb-8">
+        <p className="eyebrow text-champagne">Saved</p>
+        <h1 className="mt-4 font-display text-4xl leading-[1.05] tracking-[-0.02em] text-ivory sm:text-5xl">
+          {t("title")}
+        </h1>
+      </div>
 
       {items.length === 0 ? (
-        <div className="flex flex-col items-center gap-4 rounded-lg border py-16 text-center">
-          <p className="text-muted-foreground">{t("empty")}</p>
-          <Button asChild>
+        <div className="mt-10 flex flex-col items-center gap-5 rounded-[4px] border border-border py-24 text-center">
+          <p className="text-sm text-ash">{t("empty")}</p>
+          <Button
+            className="h-11 rounded-[4px] px-7 hover:bg-brass"
+            asChild
+          >
             <Link href="/shop">{t("continueShopping")}</Link>
           </Button>
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-12 sm:grid-cols-3 lg:grid-cols-4">
           {items.map((item) => {
             const product = item.product;
             const translation = product.translations.find(
@@ -69,36 +80,21 @@ export default async function WishlistPage({ params }: Props) {
             );
             const name = translation?.name ?? product.name;
             const minPrice = product.variants[0]?.price ?? product.price;
-            const imageUrl = product.images[0]?.url;
             return (
-              <Card key={item.id} className="gap-2 overflow-hidden py-0">
-                <div className="relative aspect-square bg-muted">
-                  {imageUrl ? (
-                    <Image
-                      src={imageUrl}
-                      alt={name}
-                      fill
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      className="object-cover"
-                    />
-                  ) : null}
-                  <div className="absolute right-2 top-2">
-                    <WishlistButton productId={product.id} initialWished />
-                  </div>
-                </div>
-                <CardContent className="space-y-1 p-3">
-                  <p className="text-xs uppercase tracking-wide text-muted-foreground">
-                    {product.brand.name}
-                  </p>
-                  <Link
-                    href={`/product/${product.slug}`}
-                    className="line-clamp-1 font-medium hover:underline"
-                  >
-                    {name}
-                  </Link>
-                  <p className="font-semibold">{formatMMK(minPrice)}</p>
-                </CardContent>
-              </Card>
+              <ProductCard
+                key={item.id}
+                product={{
+                  id: product.id,
+                  slug: product.slug,
+                  name,
+                  brandName: product.brand.name,
+                  concentration: product.concentration,
+                  price: minPrice,
+                  imageUrl: product.images[0]?.url,
+                  imageAlt: product.images[0]?.alt ?? undefined,
+                  wished: true,
+                }}
+              />
             );
           })}
         </div>

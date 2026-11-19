@@ -19,11 +19,16 @@ export function CartButton() {
   const count = mounted ? cartCount(items) : 0;
 
   return (
-    <Button variant="ghost" size="icon" asChild className="relative">
-      <Link href="/cart" aria-label="Cart">
-        <ShoppingBag className="h-5 w-5" />
+    <Button
+      variant="ghost"
+      size="icon"
+      asChild
+      className="relative text-ash hover:bg-surface hover:text-ivory"
+    >
+      <Link href="/cart" aria-label={`Cart${count > 0 ? `, ${count} items` : ""}`}>
+        <ShoppingBag className="h-5 w-5" strokeWidth={1.5} />
         {count > 0 ? (
-          <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-medium text-primary-foreground">
+          <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-champagne px-1 text-[10px] font-medium text-canvas">
             {count}
           </span>
         ) : null}

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/store/cart";
 import { useRecentStore } from "@/store/recent";
 import { formatMMK } from "@/lib/format";
+import Magnet from "@/components/react-bits/magnet";
 
 export type VariantOption = {
   id: string;
@@ -67,9 +68,9 @@ export function AddToCart({
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div>
-        <p className="mb-2 text-sm font-medium">{t("sizeLabel")}</p>
+        <p className="eyebrow mb-3 text-taupe">{t("sizeLabel")}</p>
         <div className="flex flex-wrap gap-2">
           {variants.map((v) => (
             <button
@@ -77,10 +78,10 @@ export function AddToCart({
               type="button"
               disabled={v.stock <= 0}
               onClick={() => setSelectedId(v.id)}
-              className={`rounded-md border px-4 py-2 text-sm transition-colors ${
+              className={`rounded-[4px] border px-4 py-2 text-sm transition-colors duration-200 ${
                 v.id === selectedId
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "hover:bg-muted"
+                  ? "border-champagne bg-champagne text-canvas"
+                  : "border-border text-ash hover:border-ivory/25 hover:text-ivory"
               } ${v.stock <= 0 ? "opacity-40" : ""}`}
             >
               {v.sizeMl} ml
@@ -90,11 +91,11 @@ export function AddToCart({
       </div>
 
       {selected ? (
-        <div className="flex items-baseline gap-3">
-          <span className="text-2xl font-semibold">
+        <div className="flex items-baseline gap-3 border-t border-border pt-5">
+          <span className="tabular font-display text-3xl text-ivory">
             {formatMMK(selected.price)}
           </span>
-          <span className="text-sm text-muted-foreground">
+          <span className="text-xs text-ash">
             {selected.stock > 0
               ? t("inStock", { count: selected.stock })
               : t("soldOut")}
@@ -103,23 +104,23 @@ export function AddToCart({
       ) : null}
 
       <div className="flex items-center gap-3">
-        <div className="flex items-center rounded-md border">
+        <div className="flex items-center rounded-[4px] border border-border">
           <Button
             type="button"
             variant="ghost"
             size="icon"
-            className="h-9 w-9 rounded-r-none"
+            className="h-11 w-11 rounded-none rounded-l-[3px]"
             onClick={() => setQtyState((q) => Math.max(1, q - 1))}
             aria-label="decrease"
           >
             <Minus className="h-3.5 w-3.5" />
           </Button>
-          <span className="w-10 text-center text-sm">{qty}</span>
+          <span className="tabular w-10 text-center text-sm">{qty}</span>
           <Button
             type="button"
             variant="ghost"
             size="icon"
-            className="h-9 w-9 rounded-l-none"
+            className="h-11 w-11 rounded-none rounded-r-[3px]"
             onClick={() => setQtyState((q) => Math.min(99, q + 1))}
             aria-label="increase"
           >
@@ -127,20 +128,22 @@ export function AddToCart({
           </Button>
         </div>
 
-        <Button
-          size="lg"
-          className="flex-1"
-          disabled={soldOut}
-          onClick={handleAdd}
-        >
-          {added ? (
-            <span className="flex items-center gap-2">
-              <Check className="h-4 w-4" /> {t("added")}
-            </span>
-          ) : (
-            t("addToCart")
-          )}
-        </Button>
+        <Magnet magnetStrength={20}>
+          <Button
+            size="lg"
+            className="h-11 flex-1 rounded-[4px] text-[0.8125rem] tracking-[0.02em] hover:bg-brass"
+            disabled={soldOut}
+            onClick={handleAdd}
+          >
+            {added ? (
+              <span className="flex items-center gap-2">
+                <Check className="h-4 w-4" /> {t("added")}
+              </span>
+            ) : (
+              t("addToCart")
+            )}
+          </Button>
+        </Magnet>
       </div>
     </div>
   );

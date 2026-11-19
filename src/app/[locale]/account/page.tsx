@@ -91,71 +91,78 @@ export default async function AccountPage({ params }: Props) {
   ];
 
   return (
-    <div className="mx-auto w-full max-w-5xl px-4 py-8 sm:px-6 lg:py-12">
-      <section className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+    <div className="mx-auto w-full max-w-5xl px-6 py-14 sm:px-6 lg:py-20">
+      <section className="flex flex-col gap-5 border-b border-border pb-8 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-4">
           <div
             aria-hidden
-            className="bg-primary text-primary-foreground flex size-14 shrink-0 items-center justify-center rounded-full text-lg font-semibold sm:size-16 sm:text-xl"
+            className="flex size-14 shrink-0 items-center justify-center rounded-[4px] border border-champagne/40 bg-champagne/10 text-lg font-medium text-champagne sm:size-16 sm:text-xl"
           >
             {initialsOf(dbUser.name, dbUser.email)}
           </div>
           <div className="min-w-0">
-            <h1 className="truncate text-xl font-semibold tracking-tight sm:text-2xl">
+            <p className="eyebrow text-champagne">Account</p>
+            <h1 className="mt-2 truncate font-display text-3xl leading-[1.05] tracking-[-0.02em] text-ivory sm:text-4xl">
               {dbUser.name ?? dbUser.email}
             </h1>
-            <p className="truncate text-sm text-muted-foreground">
-              {dbUser.email}
-            </p>
-            <div className="mt-1.5 flex flex-wrap items-center gap-2">
-              <Badge variant={isAdmin ? "default" : "secondary"}>
+            <p className="mt-1 truncate text-sm text-ash">{dbUser.email}</p>
+            <div className="mt-2 flex flex-wrap items-center gap-2">
+              <Badge
+                variant={isAdmin ? "default" : "secondary"}
+                className="rounded-[2px]"
+              >
                 {isAdmin ? t("roleAdmin") : t("roleUser")}
               </Badge>
-              <span className="text-xs text-muted-foreground">
+              <span className="text-xs text-taupe">
                 {t("memberSince")} {joined}
               </span>
             </div>
           </div>
         </div>
         <div className="flex shrink-0 gap-2">
-          <Button asChild variant="outline" size="sm">
+          <Button
+            asChild
+            variant="outline"
+            size="sm"
+            className="h-10 rounded-[4px] border-border bg-transparent text-ivory hover:border-ivory/25 hover:bg-transparent hover:text-champagne"
+          >
             <Link href="/shop">{t("continueShopping")}</Link>
           </Button>
         </div>
       </section>
 
-      <section className="mt-6 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
+      <section className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
         {stats.map((s) => (
           <div
             key={s.label}
-            className="bg-card rounded-xl border py-4 shadow-sm px-4 sm:px-5"
+            className="rounded-[4px] border border-border bg-surface/40 px-4 py-4 sm:px-5"
           >
-            <p className="text-muted-foreground text-xs font-medium uppercase tracking-wide">
-              {s.label}
-            </p>
-            <p className="mt-1 truncate text-lg font-semibold tracking-tight sm:text-xl">
+            <p className="eyebrow text-taupe">{s.label}</p>
+            <p className="mt-2 truncate tabular text-lg font-medium text-ivory sm:text-xl">
               {s.value}
             </p>
           </div>
         ))}
       </section>
 
-      <section className="mt-6 grid gap-6 lg:grid-cols-3">
-        <Card className="lg:col-span-2">
+      <section className="mt-8 grid gap-6 lg:grid-cols-3">
+        <Card className="rounded-[4px] border-border bg-surface/30 lg:col-span-2">
           <CardHeader>
-            <CardTitle>{t("profileDetails")}</CardTitle>
+            <CardTitle className="font-display text-2xl font-normal text-ivory">
+              {t("profileDetails")}
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <dl className="divide-y">
+            <dl className="divide-y divide-border">
               {details.map((d) => (
                 <div
                   key={d.label}
                   className="flex flex-col gap-0.5 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
                 >
-                  <dt className="text-muted-foreground text-sm">{d.label}</dt>
+                  <dt className="text-sm text-ash">{d.label}</dt>
                   <dd
-                    className={`text-sm font-medium break-words sm:text-right ${
-                      d.muted ? "text-muted-foreground font-normal" : ""
+                    className={`break-words text-sm font-medium text-ivory sm:text-right ${
+                      d.muted ? "font-normal text-taupe" : ""
                     }`}
                   >
                     {d.value}
@@ -166,19 +173,32 @@ export default async function AccountPage({ params }: Props) {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="rounded-[4px] border-border bg-surface/30">
           <CardHeader>
-            <CardTitle>{t("quickActions")}</CardTitle>
+            <CardTitle className="font-display text-2xl font-normal text-ivory">
+              {t("quickActions")}
+            </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-2">
-            <Button asChild variant="outline" className="w-full justify-start">
+            <Button
+              asChild
+              variant="outline"
+              className="w-full justify-start rounded-[4px] border-border bg-transparent text-ivory hover:border-ivory/25 hover:bg-transparent hover:text-champagne"
+            >
               <Link href="/shop">{t("continueShopping")}</Link>
             </Button>
-            <Button asChild variant="outline" className="w-full justify-start">
+            <Button
+              asChild
+              variant="outline"
+              className="w-full justify-start rounded-[4px] border-border bg-transparent text-ivory hover:border-ivory/25 hover:bg-transparent hover:text-champagne"
+            >
               <Link href={`/${locale}/wishlist`}>{t("wishlist")}</Link>
             </Button>
             {isAdmin ? (
-              <Button asChild className="w-full justify-start">
+              <Button
+                asChild
+                className="w-full justify-start rounded-[4px] hover:bg-brass"
+              >
                 <Link href="/admin">{t("adminPanel")}</Link>
               </Button>
             ) : null}
@@ -186,7 +206,7 @@ export default async function AccountPage({ params }: Props) {
               <Button
                 type="submit"
                 variant="ghost"
-                className="text-muted-foreground hover:text-destructive w-full justify-start"
+                className="w-full justify-start rounded-[4px] text-ash hover:bg-surface hover:text-destructive"
               >
                 {t("signOut")}
               </Button>

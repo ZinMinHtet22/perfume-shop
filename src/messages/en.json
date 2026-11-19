@@ -11,25 +11,36 @@
     "secondaryCta": "Explore Collection",
     "featuredTitle": "Featured Fragrances",
     "featuredAll": "View all",
+    "featuredEyebrow": "01 — Featured",
     "recTitle": "Recommended for you",
+    "recEyebrow": "02 — Recommended",
     "recSubtitle": "Similar to the perfumes you've been viewing",
     "recFallbackSubtitle": "Handpicked from across the shop",
     "recLoading": "Finding matches",
+    "editorialEyebrow": "The house",
+    "editorialQuote": "A fragrance is not worn. It is remembered.",
+    "editorialBody": "We are a perfume house built for Myanmar — sourcing authentic bottles through trusted channels, checking every one by hand, and delivering them with care from Yangon to every corner of the country.",
+    "editorialLink": "Read our story",
+    "valuesEyebrow": "03 — The promise",
     "values": {
       "pay": {
+        "label": "Payment",
         "title": "KBZ Pay, Bank & COD",
         "desc": "Pay your way — KBZ Pay QR, bank transfer, or cash on delivery."
       },
       "delivery": {
+        "label": "Delivery",
         "title": "Nationwide Delivery",
         "desc": "Fast, careful shipping to every corner of Myanmar."
       },
       "authentic": {
+        "label": "Authenticity",
         "title": "100% Authentic",
         "desc": "Every bottle is sourced from trusted suppliers and quality-checked."
       }
     },
     "ctaBand": {
+      "eyebrow": "Begin here",
       "title": "Find the scent that speaks for you",
       "desc": "Browse dozens of designer and niche fragrances for men and women.",
       "button": "Start Shopping"
@@ -43,7 +54,29 @@
     "language": "Language",
     "switchTo": "Switch to {locale}",
     "account": "Account",
-    "wishlist": "Wishlist"
+    "wishlist": "Wishlist",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "Footer": {
+    "brand": "Perfume Shop",
+    "blurb": "Authentic fragrances, chosen with care and delivered across Myanmar.",
+    "locale": "Yangon · Myanmar",
+    "shopTitle": "Shop",
+    "careTitle": "Customer care",
+    "contactTitle": "Contact",
+    "allFragrances": "All fragrances",
+    "wishlist": "Wishlist",
+    "cart": "Cart",
+    "contact": "Contact us",
+    "about": "Our story",
+    "account": "My account",
+    "address": "Yangon, Myanmar",
+    "hours": "Mon – Sat, 9:00 AM – 6:00 PM",
+    "copyright": "© {year} Perfume Shop. All rights reserved.",
+    "payKbz": "KBZ Pay",
+    "payBank": "Bank transfer",
+    "payCod": "Cash on delivery"
   },
   "Shop": {
     "title": "Shop",

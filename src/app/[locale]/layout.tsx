@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Outfit } from "next/font/google";
+import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import { Suspense } from "react";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
@@ -8,7 +8,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { auth } from "@/auth";
 import { routing } from "@/i18n/routing";
 import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
 import { IntroSplash } from "@/components/intro-splash";
+import Noise from "@/components/react-bits/noise";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -21,9 +23,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
+  style: ["normal", "italic"],
 });
 
 type Props = {
@@ -38,9 +41,35 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const title = t("title");
+  const description = t("description");
+
   return {
-    title: t("title"),
-    description: t("description"),
+    metadataBase: new URL(siteUrl),
+    title,
+    description,
+    applicationName: "Perfume Shop",
+    alternates: {
+      canonical: `/${locale}`,
+    },
+    openGraph: {
+      type: "website",
+      locale: locale === "my" ? "my_MM" : "en_US",
+      url: `/${locale}`,
+      siteName: "Perfume Shop",
+      title,
+      description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
 
@@ -60,15 +89,25 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html
       lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable} ${outfit.variable} dark h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable} dark h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="flex min-h-full flex-col">
         <NextIntlClientProvider>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-[4px] focus:bg-champagne focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-canvas"
+          >
+            Skip to content
+          </a>
           <IntroSplash />
           <Suspense fallback={<Navbar />}>
             <AuthNav />
           </Suspense>
-          <main className="flex-1 pt-[4.5rem]">{children}</main>
+          <main id="main-content" className="flex-1 pt-16">
+            {children}
+          </main>
+          <Noise />
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>

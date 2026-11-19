@@ -88,28 +88,30 @@ export function RecommendedProducts({
   if (shown.length === 0) return null;
 
   return (
-    <section className="mx-auto w-full max-w-6xl px-4 py-16">
+    <section className="mx-auto w-full max-w-[1320px] px-6 py-16 lg:px-10 lg:py-24">
       <ScrollReveal>
-        <div className="mb-8 flex items-end justify-between gap-4">
+        <div className="flex items-end justify-between gap-6">
           <div>
-            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            <p className="eyebrow text-champagne">{t("recEyebrow")}</p>
+            <h2 className="mt-4 font-display text-3xl leading-tight tracking-[-0.01em] text-ivory sm:text-4xl">
               {t("recTitle")}
             </h2>
-            <p className="mt-1 text-sm text-muted-foreground">
+            <p className="mt-3 text-sm text-ash">
               {seeded ? t("recSubtitle") : t("recFallbackSubtitle")}
               {pending ? ` · ${t("recLoading")}` : ""}
             </p>
           </div>
           <Link
             href="/shop"
-            className="hidden text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline sm:block"
+            className="group hidden items-center gap-3 pb-1 text-sm text-ash transition-colors hover:text-ivory sm:inline-flex"
           >
             {t("featuredAll")}
+            <span className="h-px w-6 bg-champagne transition-all duration-300 group-hover:w-10" />
           </Link>
         </div>
       </ScrollReveal>
       <div
-        className={`grid grid-cols-2 gap-4 transition-opacity duration-500 ease-in-out sm:grid-cols-3 lg:grid-cols-4 ${
+        className={`mt-12 grid grid-cols-2 gap-x-5 gap-y-12 transition-opacity duration-500 ease-in-out sm:grid-cols-3 lg:grid-cols-4 ${
           fading ? "opacity-0" : "opacity-100"
         }`}
       >

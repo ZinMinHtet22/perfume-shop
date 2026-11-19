@@ -1,0 +1,33 @@
+{
+  "projectId": "2470844449027809469",
+  "title": "Perfume Shop — Refined Dark Luxury",
+  "deviceType": "DESKTOP",
+  "designSystem": {
+    "assetName": "assets/8152506891648249488",
+    "displayName": "Aureate Luxe",
+    "colorMode": "DARK",
+    "headlineFont": "NEWSREADER",
+    "bodyFont": "INTER",
+    "labelFont": "INTER",
+    "roundness": "ROUND_FOUR",
+    "customColor": "#C6A664",
+    "overrides": {
+      "primary": "#C6A664",
+      "secondary": "#8A7340",
+      "tertiary": "#B98A7A",
+      "neutral": "#14120F"
+    }
+  },
+  "screens": [
+    {
+      "id": "418ec8f0a1e8436db2a7817d7d0ddb09",
+      "name": "projects/2470844449027809469/screens/418ec8f0a1e8436db2a7817d7d0ddb09",
+      "title": "Maison Aureate — Luxury Perfume Storefront",
+      "deviceType": "DESKTOP",
+      "local": {
+        "html": ".stitch/designs/homepage.html",
+        "screenshot": ".stitch/designs/homepage.png"
+      }
+    }
+  ]
+}

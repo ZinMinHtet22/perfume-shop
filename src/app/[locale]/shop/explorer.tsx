@@ -87,19 +87,19 @@ export async function ShopExplorer({
   ]);
 
   const selectClass =
-    "h-9 w-full rounded-md border border-input bg-transparent px-3 text-sm";
+    "h-10 w-full rounded-[4px] border border-input bg-canvas px-3 text-sm text-ivory outline-none transition-colors duration-200 focus:border-champagne";
 
   return (
     <>
       <form
         method="get"
-        className="mb-8 grid gap-3 rounded-lg border bg-muted/30 p-4 sm:grid-cols-2 lg:grid-cols-6"
+        className="grid gap-3 rounded-[4px] border border-border bg-surface/50 p-4 sm:grid-cols-2 lg:grid-cols-6"
       >
         <Input
           name="q"
           defaultValue={filters.q}
           placeholder={t("search")}
-          className="h-9 lg:col-span-2"
+          className="h-10 rounded-[4px] border-input bg-canvas lg:col-span-2"
         />
         <select name="gender" defaultValue={filters.gender} className={selectClass}>
           <option value="">{t("allGenders")}</option>
@@ -139,22 +139,28 @@ export async function ShopExplorer({
             <option value="price-asc">{t("sortPriceAsc")}</option>
             <option value="price-desc">{t("sortPriceDesc")}</option>
           </select>
-          <Button type="submit" size="sm" className="h-9 shrink-0">
+          <Button
+            type="submit"
+            size="sm"
+            className="h-10 shrink-0 rounded-[4px] px-5 hover:bg-brass"
+          >
             {t("apply")}
           </Button>
         </div>
       </form>
 
-      <p className="mb-4 text-sm text-muted-foreground">
-        {t("results", { count: products.length })}
-      </p>
+      <div className="mt-8 flex items-center justify-between border-b border-border pb-4">
+        <p className="eyebrow text-taupe">
+          {t("results", { count: products.length })}
+        </p>
+      </div>
 
       {products.length === 0 ? (
-        <p className="py-16 text-center text-muted-foreground">
+        <p className="py-24 text-center text-sm text-ash">
           {t("noResults")}
         </p>
       ) : (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-12 sm:grid-cols-3 lg:grid-cols-4">
           {products.map((p) => {
             const name =
               locale === "my" && p.translations[0]

@@ -41,7 +41,7 @@ export function WishlistButton({
       aria-label={initialWished ? t("remove") : t("add")}
       aria-pressed={initialWished}
       className={cn(
-        "flex h-8 w-8 items-center justify-center rounded-full border bg-background/80 backdrop-blur transition-colors hover:bg-muted disabled:opacity-60",
+        "flex h-8 w-8 items-center justify-center rounded-full border border-border bg-canvas/80 backdrop-blur transition-colors hover:border-champagne/50 hover:bg-surface disabled:opacity-60",
         className
       )}
     >
@@ -50,11 +50,11 @@ export function WishlistButton({
         className={cn(
           "h-4 w-4",
           initialWished
-            ? "fill-red-500 text-red-500"
-            : "fill-none text-foreground"
+            ? "fill-champagne text-champagne"
+            : "fill-none text-ivory"
         )}
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden="true"
